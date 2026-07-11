@@ -15,18 +15,24 @@ A Mac app for [Hugo](https://gohugo.io). Run the server, preview your pages and 
 
 ## What it does
 
-Hugo is fast, but it lives in the terminal. HugoKit puts the parts you use every day — the server, the config, the content, the deploy — in a single native window.
+Hugo is fast, free and productive — but it lives in the terminal. To run a site you need to know `hugo server`, its flags, where the binary is, and how to push to GitHub Pages or a web host. Trivial for a developer, a wall for everyone else.
 
-- **Sites in one place.** A sidebar with every Hugo site you own, and an All Sites overview with grid and table views.
-- **Server without the terminal.** Start, stop and restart `hugo server`, with port allocation and detection of servers you started yourself.
-- **Readable logs.** Hugo's output is parsed into structured events instead of a wall of text.
-- **Config editor.** Edit `hugo.toml` in a form or as raw text, with diagnostics that explain what's wrong before you save.
-- **Content browser.** Browse and filter your content, create new pages from your own archetypes, and preview templates.
-- **Theme gallery.** Browse community themes, preview them, and install with one click — or scaffold a theme of your own.
-- **Publish.** Deploy to GitHub Pages (via GitHub Actions) or to any host over SFTP/FTP. Preflight checks catch the usual publish-blockers first.
-- **Site health.** Front matter checks, content stats and build history per site.
-- **Hugo reference.** The documentation you keep looking up, in a window next to your site.
-- **Menu bar.** Server status and quick actions without opening the app.
+HugoKit takes the wall down. It wraps Hugo's CLI in a small, quiet macOS app that finds Hugo for you, keeps your sites in one place, and turns the daily moves — start the server, build, publish — into one click. The terminal is still there. You just don't have to look at it.
+
+## Features
+
+- **Every site in one window.** A sidebar with all your sites, and an All Sites overview in two lenses: running servers first, or a table with pages, drafts, scheduled posts and last published. Filter, search and pin.
+- **The server, without the terminal.** Start, stop and restart `hugo server`, with a clickable `localhost:` link. HugoKit also adopts a server you started yourself instead of fighting it for the port.
+- **Logs that read like events.** Hugo's output is parsed into timestamped events with a severity, a summary and the file it refers to — not a wall of scrollback.
+- **Content.** Browse and filter your pages, create new content from your own archetypes, edit Markdown in the app (⌘S) or hand off to your editor, and preview templates.
+- **Config editor.** A structured form and a raw text tab over the same `hugo.toml`, with a diff before anything is written back.
+- **Site health.** A score per site — front matter checks, content stats, what's missing.
+- **Publish to more than one place.** Any mix of GitHub Pages and SFTP/FTP destinations per site: production, staging, a backup on your own host. Publish one, or publish all. SFTP uploads only the files that actually changed.
+- **Preflight that fixes things.** Before a publish, HugoKit catches what usually breaks a deployed site — subpath-broken links, assets, config — shows the fix as a red/green diff, applies it when you approve, and re-runs. You never hand-edit a template.
+- **New sites in a click.** Create one from the bundled HugoKit Starter — pick the sections and features you want — or start blank, with `git init` done for you.
+- **Hugo Reference.** Searchable Hugo documentation in a window next to your site.
+- **Menu bar and ⌘K.** Server status and quick actions from the menu bar; a command palette for everything else.
+- **Native notifications** for server, build and publish events, with a toggle per event.
 
 ## Install
 
@@ -41,11 +47,13 @@ The app is signed with a Developer ID and notarized by Apple, and updates itself
 - macOS 26 (Tahoe) or later
 - Hugo — HugoKit installs it for you if you don't have it
 
-## Your files
+## Good to know
 
-HugoKit reads a standard Hugo project — `content/`, `themes/`, `hugo.toml` — and never restructures it. The one file it writes is `.hugokit/ftp-manifest.json`, a sync manifest so SFTP/FTP deploys upload only what actually changed. Nothing else in your site changes unless you ask for it.
-
-Site references and settings live in `UserDefaults`. Credentials (GitHub tokens, SFTP passwords) live in the macOS Keychain, never in a config file.
+- **Local-first.** No account, no backend. HugoKit talks straight to Hugo, Git and your host. GitHub tokens and SFTP passwords live in the macOS Keychain, never in a config file.
+- **Your site stays yours.** HugoKit reads a standard Hugo project — `content/`, `themes/`, `hugo.toml` — and never restructures it. The one file it writes is `.hugokit/ftp-manifest.json`, the sync manifest that lets SFTP deploys skip unchanged files.
+- **Password-based SFTP needs `sshpass`** (`brew install sshpass`). Key-based SFTP works out of the box — leave the password field empty to use your `~/.ssh/` key.
+- **Publish runs one target at a time** and stops at the first failure.
+- **Deploy targets are GitHub Pages and SFTP/FTP.** Netlify, Vercel and Cloudflare Pages are not supported.
 
 ## This repository
 
