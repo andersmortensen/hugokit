@@ -1,4 +1,9 @@
-<img src="docs/icon.png" width="96" alt="HugoKit">
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/mark-dark.png">
+    <img src="docs/mark-light.png" width="96" alt="HugoKit">
+  </picture>
+</p>
 
 # HugoKit
 
