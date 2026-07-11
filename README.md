@@ -1,84 +1,53 @@
-<p align="center">
-  <img src="https://hugokit.app/images/icon-256.png" width="128" height="128" alt="HugoKit icon">
-</p>
+<img src="docs/icon.png" width="96" alt="HugoKit">
 
-<h1 align="center">HugoKit</h1>
+# HugoKit
 
-<p align="center">
-  <strong>Your Hugo sites, one click away.</strong><br>
-  A native macOS companion for <a href="https://gohugo.io">Hugo</a>. Manage sites, run servers, and deploy — no terminal needed.
-</p>
+A Mac app for [Hugo](https://gohugo.io). Run the server, preview your pages and publish your site from one window.
 
-<p align="center">
-  <a href="https://hugokit.app">Website</a> ·
-  <a href="https://github.com/andersmortensen/hugokit/releases/latest">Download</a> ·
-  <a href="https://github.com/andersmortensen/hugokit/issues">Report a bug</a>
-</p>
+[Download](https://github.com/andersmortensen/hugokit/releases/latest) · [hugokit.com](https://hugokit.com) · [Report a bug](https://github.com/andersmortensen/hugokit/issues)
 
----
+![HugoKit](docs/screenshot-dashboard.png)
 
-## What is HugoKit?
+## What it does
 
-Hugo is one of the fastest static site generators around — but it lives in the terminal. HugoKit wraps Hugo's CLI in a small, focused macOS app so you can spend less time typing commands and more time writing.
+Hugo is fast, but it lives in the terminal. HugoKit puts the parts you use every day — the server, the config, the content, the deploy — in a single native window.
 
-Open a site, hit start, and you're previewing. Hit publish, and you're live.
+- **Sites in one place.** A sidebar with every Hugo site you own, and an All Sites overview with grid and table views.
+- **Server without the terminal.** Start, stop and restart `hugo server`, with port allocation and detection of servers you started yourself.
+- **Readable logs.** Hugo's output is parsed into structured events instead of a wall of text.
+- **Config editor.** Edit `hugo.toml` in a form or as raw text, with diagnostics that explain what's wrong before you save.
+- **Content browser.** Browse and filter your content, create new pages from your own archetypes, and preview templates.
+- **Theme gallery.** Browse community themes, preview them, and install with one click — or scaffold a theme of your own.
+- **Publish.** Deploy to GitHub Pages (via GitHub Actions) or to any host over SFTP/FTP. Preflight checks catch the usual publish-blockers first.
+- **Site health.** Front matter checks, content stats and build history per site.
+- **Hugo reference.** The documentation you keep looking up, in a window next to your site.
+- **Menu bar.** Server status and quick actions without opening the app.
 
-## Features
+## Install
 
-- **Multi-site sidebar** — keep all your Hugo sites in one place and switch between them instantly
-- **One-click server** — start, stop, and restart `hugo server` without touching the terminal
-- **Live log streaming** — structured server output right in the app, with filterable severity levels
-- **Deploy from the app** — push to GitHub Pages, Netlify, Vercel, Cloudflare Pages, or any FTP/SFTP host
-- **Visual config editor** — edit `hugo.toml` with form fields or raw text, with diff preview before saving
-- **Hugo auto-install** — detects your Hugo binary, or downloads and installs it for you
-- **Preflight checks** — catches common publish-blocking issues before you deploy, with one-click fixes
-- **Menu bar quick access** — start a server or check status without opening the main window
-- **Native and lightweight** — built in SwiftUI, designed to feel like a system utility
+1. Download the latest DMG from [Releases](https://github.com/andersmortensen/hugokit/releases/latest).
+2. Open it and drag HugoKit to Applications.
+3. Launch it. Onboarding finds (or installs) Hugo and helps you add your first site.
 
-## Installation
-
-1. Download the latest `HugoKit.dmg` from [Releases](https://github.com/andersmortensen/hugokit/releases/latest)
-2. Open the DMG and drag HugoKit to Applications
-3. Launch HugoKit — the onboarding wizard will guide you through Hugo detection and adding your first site
+The app is signed with a Developer ID and notarized by Apple, and updates itself via Sparkle (**HugoKit → Check for Updates…**).
 
 ### Requirements
 
-- macOS 26.2 or later
-- Hugo (HugoKit can install it for you if you don't have it)
+- macOS 26 (Tahoe) or later
+- Hugo — HugoKit installs it for you if you don't have it
 
-## Getting started
+## Your files
 
-On first launch, HugoKit will:
+HugoKit reads a standard Hugo project — `content/`, `themes/`, `hugo.toml` — and never restructures it. The one file it writes is `.hugokit/ftp-manifest.json`, a sync manifest so SFTP/FTP deploys upload only what actually changed. Nothing else in your site changes unless you ask for it.
 
-1. Look for an existing Hugo installation and offer to install one if not found
-2. Walk you through adding your first site (open an existing one, create a new one, or watch a folder)
-3. Show you the main panel where everything lives — server controls, content stats, config, and publish
+Site references and settings live in `UserDefaults`. Credentials (GitHub tokens, SFTP passwords) live in the macOS Keychain, never in a config file.
 
-That's it. No project files to set up, no configuration required.
+## This repository
 
-## FAQ
+HugoKit is closed source. This repo carries the releases, the issue tracker and this README. Bug reports and feature requests are welcome — [open an issue](https://github.com/andersmortensen/hugokit/issues).
 
-**Is HugoKit open source?**
-The repository is public for issues, releases, and documentation, but the source code is not currently open. Contributions and bug reports are welcome via Issues.
-
-**Does it work with my existing Hugo site?**
-Yes. HugoKit reads standard Hugo project structure — `content/`, `themes/`, `hugo.toml` — and doesn't add any HugoKit-specific files to your site.
-
-**Can I use it with Hugo themes from the community?**
-Yes. HugoKit doesn't restrict theming. Any theme that works with Hugo works with HugoKit.
-
-**What deploy targets are supported?**
-GitHub Pages (via Actions), Netlify, Vercel, Cloudflare Pages, FTP, SFTP, and a local static server for testing builds.
-
-**Where does HugoKit store its data?**
-Site references and settings live in macOS UserDefaults. Credentials (GitHub tokens, FTP passwords) live in the macOS Keychain. HugoKit never modifies the contents of your Hugo sites without your explicit action.
-
-## Feedback and bugs
-
-Found a bug or have a feature request? [Open an issue](https://github.com/andersmortensen/hugokit/issues).
-
-For general questions, reach out on the [HugoKit website](https://hugokit.app).
+For anything else: [kontakt@andersmortensen.com](mailto:kontakt@andersmortensen.com)
 
 ## License
 
-HugoKit is proprietary software. © 2026 Anders Mortensen. All rights reserved.
+Proprietary. © 2026 Anders Mortensen. All rights reserved. The EULA ships with the app in the DMG.
