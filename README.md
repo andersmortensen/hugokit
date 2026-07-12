@@ -31,7 +31,7 @@ HugoKit takes the wall down. It wraps Hugo's CLI in a small, quiet macOS app tha
 - **Preflight that fixes things.** Before a publish, HugoKit catches what usually breaks a deployed site — subpath-broken links, assets, config — shows the fix as a red/green diff, applies it when you approve, and re-runs. You never hand-edit a template.
 - **New sites in a click.** Create one from the bundled HugoKit Starter — pick the sections and features you want — or start blank, with `git init` done for you.
 - **Hugo Reference.** Searchable Hugo documentation in a window next to your site.
-- **Menu bar and ⌘K.** Server status and quick actions from the menu bar; a command palette for everything else.
+- **Menu bar and shortcuts.** Server status and quick actions from the menu bar; ⌘P publishes, ⇧⌘P runs preflight, ⇧⌘H opens site health, ⇧⌘T previews templates.
 - **Native notifications** for server, build and publish events, with a toggle per event.
 
 ## Install
@@ -50,7 +50,7 @@ The app is signed with a Developer ID and notarized by Apple, and updates itself
 ## Good to know
 
 - **Local-first.** No account, no backend. HugoKit talks straight to Hugo, Git and your host. GitHub tokens and SFTP passwords live in the macOS Keychain, never in a config file.
-- **Your site stays yours.** HugoKit reads a standard Hugo project — `content/`, `themes/`, `hugo.toml` — and never restructures it. The one file it writes is `.hugokit/ftp-manifest.json`, the sync manifest that lets SFTP deploys skip unchanged files.
+- **Your site stays yours.** HugoKit reads a standard Hugo project — `content/`, `themes/`, `hugo.toml` — and never restructures it. It writes at most two things: `.hugokit/ftp-manifest.json`, the sync manifest that lets SFTP deploys skip unchanged files — and, if you set up GitHub Pages, the `.github/workflows/` deploy workflow.
 - **Password-based SFTP needs `sshpass`** (`brew install sshpass`). Key-based SFTP works out of the box — leave the password field empty to use your `~/.ssh/` key.
 - **Publish runs one target at a time** and stops at the first failure.
 - **Deploy targets are GitHub Pages and SFTP/FTP.** Netlify, Vercel and Cloudflare Pages are not supported.
