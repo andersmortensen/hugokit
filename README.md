@@ -52,15 +52,15 @@ The app is signed with a Developer ID and notarized by Apple, and updates itself
 - **Local-first.** No account, no backend. HugoKit talks straight to Hugo, Git and your host. GitHub tokens and SFTP passwords live in the macOS Keychain, never in a config file.
 - **Your site stays yours.** HugoKit reads a standard Hugo project — `content/`, `themes/`, `hugo.toml` — and never restructures it. It writes at most two things: `.hugokit/ftp-manifest.json`, the sync manifest that lets SFTP deploys skip unchanged files — and, if you set up GitHub Pages, the `.github/workflows/` deploy workflow.
 - **Password-based SFTP needs `sshpass`** (`brew install sshpass`). Key-based SFTP works out of the box — leave the password field empty to use your `~/.ssh/` key.
-- **Publish runs one target at a time** and stops at the first failure.
+- **Publish sends every selected target at once.** They run in parallel, and one failing destination doesn't stop the others — the publish sheet reports each target's own result.
 - **Deploy targets are GitHub Pages and SFTP/FTP.** Netlify, Vercel and Cloudflare Pages are not supported.
 
 ## This repository
 
 HugoKit is closed source. This repo carries the releases, the issue tracker and this README. Bug reports and feature requests are welcome — [open an issue](https://github.com/andersmortensen/hugokit/issues).
 
-For anything else: [kontakt@andersmortensen.com](mailto:kontakt@andersmortensen.com)
+For anything else: [hello@hugokit.com](mailto:hello@hugokit.com)
 
 ## License
 
-Proprietary. © 2026 Anders Mortensen. All rights reserved. The EULA ships with the app in the DMG.
+Proprietary. © 2026 Anders Mortensen. All rights reserved. The end user license agreement is [LICENSE.txt](LICENSE.txt) — read it here before you download; the DMG carries the app alone.
